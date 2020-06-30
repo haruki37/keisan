@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-
+#
 import random
-
+#
 n = 40 
-
+#
 nap = 3 
 nam = 1 
 nbp = 10 
@@ -12,7 +12,7 @@ ncp = 3
 ncm = 1 
 ndp = 10
 ndm = -10
-
+#
 i = 1 
 while i <= n:
     a = random.randrange(nam,nap)
@@ -64,7 +64,7 @@ while i <= n:
                     fx = "(" + str(a) + "x+" + str(b) + ")"
                 elif b < 0:
                     fx = "(" + str(a) + "x" + str(b) + ")"
-    
+ #   
             if c == 0:
                 if d > 0:
                     gx = str(d)
@@ -96,7 +96,7 @@ while i <= n:
                     gx = "(" + str(c) + "x" + str(d) + ")"
 
             ensyu = fx + gx
-
+#
         if A == 0:
             if B == 1:
                 if C > 0:
