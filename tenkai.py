@@ -1,20 +1,19 @@
-<<<<<<< HEAD
 #!/usr/bin/env python3
 #
 import random
 #
-n = 40 
+n = 40
 #
-nap = 3 
-nam = 1 
-nbp = 10 
+nap = 3
+nam = 1
+nbp = 10
 nbm = -10
 ncp = 3
-ncm = 1 
+ncm = 1
 ndp = 10
 ndm = -10
 #
-i = 1 
+i = 1
 while i <= n:
     a = random.randrange(nam,nap)
     b = random.randrange(nbm,nbp)
@@ -208,15 +207,15 @@ while i <= n:
                 elif C > 0:
                     ans = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C) 
                 elif C < 0:
-                    ans = str(A) + "x^2~+~" + str(B) + "x~" + str(C) 
+                    ans = str(A) + "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    ans = str(A) + "x^2~" + str(B) + "x" 
+                    ans = str(A) + "x^2~" + str(B) + "x"
                 elif C > 0:
-                    ans = str(A) + "x^2~" + str(B) + "x~+~" + str(C) 
+                    ans = str(A) + "x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~" + str(B) + "x~" + str(C) 
-
+                    ans = str(A) + "x^2~" + str(B) + "x~" + str(C)
+#
 #            print(a)
 #            print(b)
 #            print(c)
@@ -226,9 +225,6 @@ while i <= n:
 #            print(A)
 #            print(B)
 #            print(C)
-        print("$"+ans+"$\n\n") 
+        print("$"+ans+"$\n\n")
 #
     i = i + 1
-=======
-
->>>>>>> origin/master
