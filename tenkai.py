@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env python3
 #
 import random
@@ -228,3 +229,6 @@ while i <= n:
         print("$"+ans+"$\n\n") 
 #
     i = i + 1
+=======
+
+>>>>>>> origin/master
