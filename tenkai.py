@@ -94,7 +94,7 @@ while i <= n:
                     gx = "(" + str(c) + "x+" + str(d) + ")"
                 elif d < 0:
                     gx = "(" + str(c) + "x" + str(d) + ")"
-
+#
             ensyu = fx + gx
 #
         if A == 0:
@@ -116,96 +116,96 @@ while i <= n:
         elif A == 1:
             if B == 0:
                 if C > 0:
-                    ans = "x^2~+~" + str(C) 
+                    ans = "x^2~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~" + str(C) 
+                    ans = "x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    ans = "x^2~+~x" 
+                    ans = "x^2~+~x"
                 elif C > 0:
-                    ans = "x^2~+~x~+~" + str(C) 
+                    ans = "x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~+~x~" + str(C) 
+                    ans = "x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    ans = "x^2~-x" 
+                    ans = "x^2~-x"
                 elif C > 0:
-                    ans = "x^2~-x~+~" + str(C) 
+                    ans = "x^2~-x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~-x~" + str(C) 
+                    ans = "x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    ans = "x^2~+~" + str(B) + "x" 
+                    ans = "x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    ans = "x^2~+~" + str(B) + "x~+~" + str(C) 
+                    ans = "x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~+~" + str(B) + "x~" + str(C) 
+                    ans = "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    ans = "x^2~" + str(B) + "x" 
+                    ans = "x^2~" + str(B) + "x"
                 elif C > 0:
-                    ans = "x^2~" + str(B) + "x~+~" + str(C) 
+                    ans = "x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~" + str(B) + "x~" + str(C) 
+                    ans = "x^2~" + str(B) + "x~" + str(C)
         elif A == -1:
             if B == 0:
                 if C > 0:
-                    ans = "-x^2~+~" + str(C) 
+                    ans = "-x^2~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~" + str(C) 
+                    ans = "-x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    ans = "-x^2~+~x" 
+                    ans = "-x^2~+~x"
                 elif C > 0:
-                    ans = "-x^2~+~x~+~" + str(C) 
+                    ans = "-x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~+~x~" + str(C) 
+                    ans = "-x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    ans = "-x^2~-x" 
+                    ans = "-x^2~-x"
                 elif C > 0:
-                    ans = "-x^2~-x~+~" + str(C) 
+                    ans = "-x^2~-x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~-x~" + str(C) 
+                    ans = "-x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    ans = "-x^2~+~" + str(B) + "x" 
+                    ans = "-x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    ans = "-x^2~+~" + str(B) + "x~+~" + str(C) 
+                    ans = "-x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~+~" + str(B) + "x~" + str(C) 
+                    ans = "-x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    ans = "-x^2~" + str(B) + "x" 
+                    ans = "-x^2~" + str(B) + "x"
                 elif C > 0:
-                    ans = "-x^2~" + str(B) + "x~+~" + str(C) 
+                    ans = "-x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~" + str(B) + "x~" + str(C) 
+                    ans = "-x^2~" + str(B) + "x~" + str(C)
         else:
             if B == 0:
                 if C > 0:
-                    ans = str(A) + "x^2~+~" + str(C) 
+                    ans = str(A) + "x^2~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~" + str(C) 
+                    ans = str(A) + "x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    ans = str(A) + "x^2~+~x" 
+                    ans = str(A) + "x^2~+~x"
                 elif C > 0:
-                    ans = str(A) + "x^2~+~x~+~" + str(C) 
+                    ans = str(A) + "x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~+~x~" + str(C) 
+                    ans = str(A) + "x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    ans = str(A) + "x^2~-x" 
+                    ans = str(A) + "x^2~-x"
                 elif C > 0:
-                    ans = str(A) + "x^2~-x~+~" + str(C) 
+                    ans = str(A) + "x^2~-x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~-x~" + str(C) 
+                    ans = str(A) + "x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    ans = str(A) + "x^2~+~" + str(B) + "x" 
+                    ans = str(A) + "x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    ans = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C) 
+                    ans = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
                     ans = str(A) + "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
