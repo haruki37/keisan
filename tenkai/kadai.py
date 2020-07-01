@@ -14,7 +14,7 @@ ndp = 10
 ndm = -10
 #
 with open("ensyu.tex","w") as f:
-    print(r"\documentclass[a4j,10pt,fleqn]{jarticle}", file = f)
+    print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = f)
     print(r"\usepackage[dvipdfmx]{graphicx}", file = f)
     print(r"% \usepackage[dvipdfmx]{color}", file = f)
     print(r"\usepackage{here}", file = f)
@@ -36,7 +36,7 @@ with open("ensyu.tex","w") as f:
     print("tip: $(ax + b)(cx + d) = acx^2 + (ad + bc)x + bd$\n", file = f)
 #
 with open("ans.tex","w") as g:
-    print(r"\documentclass[a4j,10pt,fleqn]{jarticle}", file = g)
+    print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = g)
     print(r"\usepackage[dvipdfmx]{graphicx}", file = g)
     print(r"% \usepackage[dvipdfmx]{color}", file = g)
     print(r"\usepackage{here}", file = g)
@@ -73,17 +73,17 @@ while i <= n:
     else:
         if a == c and b == d:
             if a == 1 and b > 0:
-                ensyu = "(x+" + str(b) +")^2"
+                insubunkai = "(x+" + str(b) +")^2"
             elif a == 1 and b < 0:
-                ensyu = "(x" + str(b) +")^2"
+                insubunkai = "(x" + str(b) +")^2"
             elif a == -1 and b > 0:
-                ensyu = "(-x+" + str(b) +")^2"
+                insubunkai = "(-x+" + str(b) +")^2"
             elif a == -1 and b < 0:
-                ensyu = "(-x" + str(b) +")^2"
+                insubunkai = "(-x" + str(b) +")^2"
             elif a != 1 and b > 0:
-                ensyu = "(" + str(a) +"x+" + str(b) +")^2"
+                insubunkai = "(" + str(a) +"x+" + str(b) +")^2"
             elif a != 1 and b < 0:
-                ensyu = "(" + str(a) +"x" + str(b) +")^2"
+                insubunkai = "(" + str(a) +"x" + str(b) +")^2"
         else:
             if a == 0:
                 fx = str(b)
@@ -138,142 +138,142 @@ while i <= n:
                 elif d < 0:
                     gx = "(" + str(c) + "x" + str(d) + ")"
 #
-            ensyu = fx + gx
+            insubunkai = fx + gx
 #
         if A == 0:
             if B == 1:
                 if C > 0:
-                    ans = "x~+~" + str(C)
+                    tenksi = "x~+~" + str(C)
                 elif C < 0:
-                    ans = "x~" + str(C)
+                    tenksi = "x~" + str(C)
             elif B == -1:
                 if C > 0:
-                    ans = "-x~+~" + str(C)
+                    tenksi = "-x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x~" + str(C)
+                    tenksi = "-x~" + str(C)
             else:
                 if C > 0:
-                    ans = str(B) + "x~+~" + str(C)
+                    tenksi = str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = str(B) + "x~" + str(C)
+                    tenksi = str(B) + "x~" + str(C)
         elif A == 1:
             if B == 0:
                 if C > 0:
-                    ans = "x^2~+~" + str(C)
+                    tenksi = "x^2~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~" + str(C)
+                    tenksi = "x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    ans = "x^2~+~x"
+                    tenksi = "x^2~+~x"
                 elif C > 0:
-                    ans = "x^2~+~x~+~" + str(C)
+                    tenksi = "x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~+~x~" + str(C)
+                    tenksi = "x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    ans = "x^2~-x"
+                    tenksi = "x^2~-x"
                 elif C > 0:
-                    ans = "x^2~-x~+~" + str(C)
+                    tenksi = "x^2~-x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~-x~" + str(C)
+                    tenksi = "x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    ans = "x^2~+~" + str(B) + "x"
+                    tenksi = "x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    ans = "x^2~+~" + str(B) + "x~+~" + str(C)
+                    tenksi = "x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~+~" + str(B) + "x~" + str(C)
+                    tenksi = "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    ans = "x^2~" + str(B) + "x"
+                    tenksi = "x^2~" + str(B) + "x"
                 elif C > 0:
-                    ans = "x^2~" + str(B) + "x~+~" + str(C)
+                    tenksi = "x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "x^2~" + str(B) + "x~" + str(C)
+                    tenksi = "x^2~" + str(B) + "x~" + str(C)
         elif A == -1:
             if B == 0:
                 if C > 0:
-                    ans = "-x^2~+~" + str(C)
+                    tenksi = "-x^2~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~" + str(C)
+                    tenksi = "-x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    ans = "-x^2~+~x"
+                    tenksi = "-x^2~+~x"
                 elif C > 0:
-                    ans = "-x^2~+~x~+~" + str(C)
+                    tenksi = "-x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~+~x~" + str(C)
+                    tenksi = "-x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    ans = "-x^2~-x"
+                    tenksi = "-x^2~-x"
                 elif C > 0:
-                    ans = "-x^2~-x~+~" + str(C)
+                    tenksi = "-x^2~-x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~-x~" + str(C)
+                    tenksi = "-x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    ans = "-x^2~+~" + str(B) + "x"
+                    tenksi = "-x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    ans = "-x^2~+~" + str(B) + "x~+~" + str(C)
+                    tenksi = "-x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~+~" + str(B) + "x~" + str(C)
+                    tenksi = "-x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    ans = "-x^2~" + str(B) + "x"
+                    tenksi = "-x^2~" + str(B) + "x"
                 elif C > 0:
-                    ans = "-x^2~" + str(B) + "x~+~" + str(C)
+                    tenksi = "-x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = "-x^2~" + str(B) + "x~" + str(C)
+                    tenksi = "-x^2~" + str(B) + "x~" + str(C)
         else:
             if B == 0:
                 if C > 0:
-                    ans = str(A) + "x^2~+~" + str(C)
+                    tenksi = str(A) + "x^2~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~" + str(C)
+                    tenksi = str(A) + "x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    ans = str(A) + "x^2~+~x"
+                    tenksi = str(A) + "x^2~+~x"
                 elif C > 0:
-                    ans = str(A) + "x^2~+~x~+~" + str(C)
+                    tenksi = str(A) + "x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~+~x~" + str(C)
+                    tenksi = str(A) + "x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    ans = str(A) + "x^2~-x"
+                    tenksi = str(A) + "x^2~-x"
                 elif C > 0:
-                    ans = str(A) + "x^2~-x~+~" + str(C)
+                    tenksi = str(A) + "x^2~-x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~-x~" + str(C)
+                    tenksi = str(A) + "x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    ans = str(A) + "x^2~+~" + str(B) + "x"
+                    tenksi = str(A) + "x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    ans = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C)
+                    tenksi = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~+~" + str(B) + "x~" + str(C)
+                    tenksi = str(A) + "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    ans = str(A) + "x^2~" + str(B) + "x"
+                    tenksi = str(A) + "x^2~" + str(B) + "x"
                 elif C > 0:
-                    ans = str(A) + "x^2~" + str(B) + "x~+~" + str(C)
+                    tenksi = str(A) + "x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    ans = str(A) + "x^2~" + str(B) + "x~" + str(C)
+                    tenksi = str(A) + "x^2~" + str(B) + "x~" + str(C)
 #            print(a)
 #            print(b)
 #            print(c)
 #            print(d)
         print("("+str(i)+")")
-        print("$"+ensyu+"$\n")
+        print("$"+insubunkai+"$\n")
 #            print(A)
 #            print(B)
 #            print(C)
-        print("$"+ans+"$\n\n")
+        print("$"+tenksi+"$\n\n")
 #
         with open("ensyu.tex","a") as f:
-            print("("+str(i)+")~~$"+ensyu+"$\n", file = f)
+            print("("+str(i)+")~~$"+insubunkai+"$\n", file = f)
         with open("ans.tex","a") as g:
-            print("("+str(i)+")~~$"+ensyu+"$", file = g)
-            print("$$"+ans+"$$\n", file = g) 
+            print("("+str(i)+")~~$"+insubunkai+"$\n", file = g)
+            print("~~~~~~~~~$="+tenksi+"$\n", file = g) 
     i = i + 1
 with open("ensyu.tex","a") as f:
     print(r"\end{document}", file = f)
