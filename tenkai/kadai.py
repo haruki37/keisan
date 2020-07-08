@@ -2,16 +2,16 @@
 #
 import random
 #
-n = 40
+n = 100
 #
-nap = 3
-nam = 1
-nbp = 10
-nbm = -10
-ncp = 3
-ncm = 1
-ndp = 10
-ndm = -10
+nal = 5
+nas = -5
+nbl = 10
+nbs = -10
+ncl = 5
+ncs = -5
+ndl = 10
+nds = -10
 #
 with open("ensyu.tex","w") as f:
     print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = f)
@@ -33,7 +33,7 @@ with open("ensyu.tex","w") as f:
     print(r"\usepackage{tabularx}", file = f)
     print(r"\usepackage{pythontex}", file = f)
     print(r"\begin{document}", file = f)
-    print("tip: $(ax + b)(cx + d) = acx^2 + (ad + bc)x + bd$\n", file = f)
+    print("tip: $P(ax + b)(cx + d) = Pacx^2 + P(ad + bc)x + Pbd$\n", file = f)
 #
 with open("ans.tex","w") as g:
     print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = g)
@@ -55,90 +55,194 @@ with open("ans.tex","w") as g:
     print(r"\usepackage{tabularx}", file = g)
     print(r"\usepackage{pythontex}", file = g)
     print(r"\begin{document}", file = g)
-    print("tip: $(ax + b)(cx + d) = acx^2 + (ad + bc)x + bd$\n", file = g)
+    print("tip: $P(ax + b)(cx + d) = Pacx^2 + P(ad + bc)x + Pbd$\n", file = g)
 #
 i = 1
 while i <= n:
-    a = random.randrange(nam,nap)
-    b = random.randrange(nbm,nbp)
-    c = random.randrange(ncm,ncp)
-    d = random.randrange(ndm,ndp)
+    a = random.randrange(nas,nal)
+    b = random.randrange(nbs,nbl)
+    c = random.randrange(ncs,ncl)
+    d = random.randrange(nds,ndl)
 #
     A = a*c
     B = a*d + b*c
     C = b*d
 #
-    if (A == 0 and B == 0) or (B == 0 and C == 0) or (C == 0 and A == 0) or (a == 0 and b == 1) or (c == 0 and d == 1):
+    if (A == 0 and B == 0) or (B == 0 and C == 0) or (C == 0 and A == 0) or (a == 0 and b == 1) or c == 0 or d == 0:
         i = i - 1
     else:
-        if a == c and b == d:
-            if a == 1 and b > 0:
-                insubunkai = "(x+" + str(b) +")^2"
-            elif a == 1 and b < 0:
-                insubunkai = "(x" + str(b) +")^2"
-            elif a == -1 and b > 0:
-                insubunkai = "(-x+" + str(b) +")^2"
-            elif a == -1 and b < 0:
-                insubunkai = "(-x" + str(b) +")^2"
-            elif a != 1 and b > 0:
-                insubunkai = "(" + str(a) +"x+" + str(b) +")^2"
-            elif a != 1 and b < 0:
-                insubunkai = "(" + str(a) +"x" + str(b) +")^2"
+        lp = 1
+        if a == 0 or b == 0 or abs(a) == 1:
+            if a == 0 or b == 0 or a == 1: 
+                lp = lp
+            else:
+                a = -1 * a
+                b = -1 * b
+                lp = lp * (-1)
         else:
-            if a == 0:
-                fx = str(b)
-            elif a == 1:
-                if b == 0:
-                    fx = "x"
-                elif b > 0:
-                    fx = "(x+" + str(b) + ")"
-                elif b < 0:
-                    fx = "(x" + str(b) + ")"
-            elif a == -1:
-                if b == 0:
-                    fx = "-x"
-                elif b > 0:
-                    fx = "(-x+" + str(b) + ")"
-                elif b < 0:
-                    fx = "(-x" + str(b) + ")"
+            j = 2
+            while j <= min(abs(a),abs(b)):
+                moda = a % j  
+                modb = b % j  
+                if moda == 0 and modb == 0:
+                    a = a // j
+                    b = b // j
+                    lp = lp * j
+                    j = j - 1
+                else:
+                    lp = lp
+                j = j + 1    
+            if a < 0:
+                a = -1 * a
+                b = -1 * b
+                lp = lp * (-1)
+        rp = 1
+        if abs(c) == 1:
+            if c == 1: 
+                rp = rp
             else:
-                if b == 0:
-                    fx = str(a) + "x"
-                elif b > 0:
-                    fx = "(" + str(a) + "x+" + str(b) + ")"
-                elif b < 0:
-                    fx = "(" + str(a) + "x" + str(b) + ")"
-            if c == 0:
-                if d > 0:
-                    gx = str(d)
-                elif d < 0:
-                    gx = "(" + str(d) + ")"
-            elif c == 1:
-                if d == 0:
-                    gx = "x"
-                elif d > 0:
-                    gx = "(x+" + str(d) + ")"
-                elif d < 0:
-                    gx = "(x" + str(d) + ")"
-            elif c == -1:
-                if d == 0:
-                    gx = "(-x)"
-                elif d > 0:
-                    gx = "(-x+" + str(d) + ")"
-                elif d < 0:
-                    gx = "(-x" + str(d) + ")"
+                c = -1 * c
+                d = -1 * d
+                rp = rp * (-1)
+        else:
+            k = 2
+            while k <= min(abs(c),abs(d)):
+                modc = c % k  
+                modd = d % k  
+                if modc == 0 and modd == 0:
+                    c = c // k
+                    d = d // k
+                    rp = rp * k
+                    k = k - 1
+                else:
+                    rp = rp
+                k = k + 1    
+            if c < 0:
+                c = -1 * c
+                d = -1 * d
+                rp = rp * (-1)
+        p = lp * rp
+        if p == 1:
+            if a == c and b == d:
+                if a == 1 and b > 0:
+                    insubunkai = "(x+" + str(b) +")^2"
+                elif a == 1 and b < 0:
+                    insubunkai = "(x" + str(b) +")^2"
+                elif a != 1 and b > 0:
+                    insubunkai = "(" + str(a) +"x+" + str(b) +")^2"
+                elif a != 1 and b < 0:
+                    insubunkai = "(" + str(a) +"x" + str(b) +")^2"
             else:
-                if d == 0:
-                    if c > 0:
-                        gx = str(c) + "x"
-                    if c < 0:
-                        gx = "(" + str(c) + "x)"
-                elif d > 0:
-                    gx = "(" + str(c) + "x+" + str(d) + ")"
-                elif d < 0:
-                    gx = "(" + str(c) + "x" + str(d) + ")"
+                if a == 0:
+                    fx = str(b)
+                elif a == 1:
+                    if b == 0:
+                        fx = "x"
+                    elif b > 0:
+                        fx = "(x+" + str(b) + ")"
+                    elif b < 0:
+                        fx = "(x" + str(b) + ")"
+                else:
+                    if b == 0:
+                        fx = str(a) + "x"
+                    elif b > 0:
+                        fx = "(" + str(a) + "x+" + str(b) + ")"
+                    elif b < 0:
+                        fx = "(" + str(a) + "x" + str(b) + ")"
+                if c == 1:
+                    if d > 0:
+                        gx = "(x+" + str(d) + ")"
+                    elif d < 0:
+                        gx = "(x" + str(d) + ")"
+                else:
+                    if d > 0:
+                        gx = "(" + str(c) + "x+" + str(d) + ")"
+                    elif d < 0:
+                        gx = "(" + str(c) + "x" + str(d) + ")"
 #
-            insubunkai = fx + gx
+                insubunkai = fx + gx
+#
+        elif p == -1:
+            if a == c and b == d:
+                if a == 1 and b > 0:
+                    insubunkai = "-(x+" + str(b) +")^2"
+                elif a == 1 and b < 0:
+                    insubunkai = "-(x" + str(b) +")^2"
+                elif a != 1 and b > 0:
+                    insubunkai = "-(" + str(a) +"x+" + str(b) +")^2"
+                elif a != 1 and b < 0:
+                    insubunkai = "-(" + str(a) +"x" + str(b) +")^2"
+            else:
+                if a == 0:
+                    fx = str(-1*b)
+                elif a == 1:
+                    if b == 0:
+                        fx = "-x"
+                    elif b > 0:
+                        fx = "-(x+" + str(b) + ")"
+                    elif b < 0:
+                        fx = "-(x" + str(b) + ")"
+                else:
+                    if b == 0:
+                        fx = str(-1*a) + "x"
+                    elif b > 0:
+                        fx = "-(" + str(a) + "x+" + str(b) + ")"
+                    elif b < 0:
+                        fx = "-(" + str(a) + "x" + str(b) + ")"
+                if c == 1:
+                    if d == 0:
+                        gx = "x"
+                    elif d > 0:
+                        gx = "(x+" + str(d) + ")"
+                    elif d < 0:
+                        gx = "(x" + str(d) + ")"
+                else:
+                    if d > 0:
+                        gx = "(" + str(c) + "x+" + str(d) + ")"
+                    elif d < 0:
+                        gx = "(" + str(c) + "x" + str(d) + ")"
+#
+                insubunkai = fx + gx
+#
+        else:
+            if a == c and b == d:
+                if a == 1 and b > 0:
+                    insubunkai = str(p) + "(x+" + str(b) +")^2"
+                elif a == 1 and b < 0:
+                    insubunkai = str(p) + "(x" + str(b) +")^2"
+                elif a != 1 and b > 0:
+                    insubunkai = str(p) + "(" + str(a) +"x+" + str(b) +")^2"
+                elif a != 1 and b < 0:
+                    insubunkai = str(p) + "(" + str(a) +"x" + str(b) +")^2"
+            else:
+                if a == 0:
+                    fx = str(p*b)
+                elif a == 1:
+                    if b == 0:
+                        fx = str(p) + "x"
+                    elif b > 0:
+                        fx = str(p) + "(x+" + str(b) + ")"
+                    elif b < 0:
+                        fx = str(p) + "(x" + str(b) + ")"
+                else:
+                    if b == 0:
+                        fx = str(p*a) + "x"
+                    elif b > 0:
+                        fx = str(p) + "(" + str(a) + "x+" + str(b) + ")"
+                    elif b < 0:
+                        fx = str(p) + "(" + str(a) + "x" + str(b) + ")"
+                if c == 1:
+                    if d > 0:
+                        gx = "(x+" + str(d) + ")"
+                    elif d < 0:
+                        gx = "(x" + str(d) + ")"
+                else:
+                    if d > 0:
+                        gx = "(" + str(c) + "x+" + str(d) + ")"
+                    elif d < 0:
+                        gx = "(" + str(c) + "x" + str(d) + ")"
+#
+                insubunkai = fx + gx
 #
         if A == 0:
             if B == 1:
