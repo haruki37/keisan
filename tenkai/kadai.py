@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 #
 import random
-#
-n = 100
-#
+# 問題数
+n = 25
+# 乱数の範囲
 nal = 5
 nas = -5
 nbl = 10
@@ -12,7 +12,7 @@ ncl = 5
 ncs = -5
 ndl = 10
 nds = -10
-#
+# 問題のlatex
 with open("ensyu.tex","w") as f:
     print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = f)
     print(r"\usepackage[dvipdfmx]{graphicx}", file = f)
@@ -33,8 +33,10 @@ with open("ensyu.tex","w") as f:
     print(r"\usepackage{tabularx}", file = f)
     print(r"\usepackage{pythontex}", file = f)
     print(r"\begin{document}", file = f)
-    print("tip: $P(ax + b)(cx + d) = Pacx^2 + P(ad + bc)x + Pbd$\n", file = f)
-#
+    print("tip: $P(ax + b)(cx + d)$\n", file = f)
+    print("~~~~~~~~~$= P\{acx^2 + (ad + bc)x +bd\}$\n", file = f)
+    print("~~~~~~~~~$= Pacx^2 + P(ad + bc)x + Pbd$\n", file = f)
+# 解答のlatex
 with open("ans.tex","w") as g:
     print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = g)
     print(r"\usepackage[dvipdfmx]{graphicx}", file = g)
@@ -55,25 +57,26 @@ with open("ans.tex","w") as g:
     print(r"\usepackage{tabularx}", file = g)
     print(r"\usepackage{pythontex}", file = g)
     print(r"\begin{document}", file = g)
-    print("tip: $P(ax + b)(cx + d) = Pacx^2 + P(ad + bc)x + Pbd$\n", file = g)
-#
+    print("tip: $P(ax + b)(cx + d)$\n", file = g)
+    print("~~~~~~~~~$= P\{acx^2 + (ad + bc)x +bd\}$\n", file = g)
+    print("~~~~~~~~~$= Pacx^2 + P(ad + bc)x + Pbd$\n", file = g)
+# 問題の作成
 i = 1
 while i <= n:
     a = random.randrange(nas,nal)
     b = random.randrange(nbs,nbl)
     c = random.randrange(ncs,ncl)
     d = random.randrange(nds,ndl)
-#
     A = a*c
     B = a*d + b*c
     C = b*d
-#
-    if (A == 0 and B == 0) or (B == 0 and C == 0) or (C == 0 and A == 0) or (a == 0 and b == 1) or c == 0 or d == 0:
+# 排除する値と約数
+    if (A == 0 and B == 0) or (B == 0 and C == 0) or (C == 0 and A == 0) or (a == 0 and abs(b) == 1) or c == 0 or d == 0:
         i = i - 1
     else:
         lp = 1
         if a == 0 or b == 0 or abs(a) == 1:
-            if a == 0 or b == 0 or a == 1: 
+            if a >= 0: 
                 lp = lp
             else:
                 a = -1 * a
@@ -122,6 +125,7 @@ while i <= n:
                 d = -1 * d
                 rp = rp * (-1)
         p = lp * rp
+# 因数分解の結果
         if p == 1:
             if a == c and b == d:
                 if a == 1 and b > 0:
@@ -243,141 +247,240 @@ while i <= n:
                         gx = "(" + str(c) + "x" + str(d) + ")"
 #
                 insubunkai = fx + gx
-#
+# 展開の結果
         if A == 0:
             if B == 1:
                 if C > 0:
-                    tenksi = "x~+~" + str(C)
+                    tenkai = "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "x~" + str(C)
+                    tenkai = "x~" + str(C)
             elif B == -1:
                 if C > 0:
-                    tenksi = "-x~+~" + str(C)
+                    tenkai = "-x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "-x~" + str(C)
+                    tenkai = "-x~" + str(C)
             else:
                 if C > 0:
-                    tenksi = str(B) + "x~+~" + str(C)
+                    tenkai = str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = str(B) + "x~" + str(C)
+                    tenkai = str(B) + "x~" + str(C)
         elif A == 1:
             if B == 0:
                 if C > 0:
-                    tenksi = "x^2~+~" + str(C)
+                    tenkai = "x^2~+~" + str(C)
                 elif C < 0:
-                    tenksi = "x^2~" + str(C)
+                    tenkai = "x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    tenksi = "x^2~+~x"
+                    tenkai = "x^2~+~x"
                 elif C > 0:
-                    tenksi = "x^2~+~x~+~" + str(C)
+                    tenkai = "x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "x^2~+~x~" + str(C)
+                    tenkai = "x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    tenksi = "x^2~-x"
+                    tenkai = "x^2~-x"
                 elif C > 0:
-                    tenksi = "x^2~-x~+~" + str(C)
+                    tenkai = "x^2~-x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "x^2~-x~" + str(C)
+                    tenkai = "x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    tenksi = "x^2~+~" + str(B) + "x"
+                    tenkai = "x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    tenksi = "x^2~+~" + str(B) + "x~+~" + str(C)
+                    tenkai = "x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "x^2~+~" + str(B) + "x~" + str(C)
+                    tenkai = "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    tenksi = "x^2~" + str(B) + "x"
+                    tenkai = "x^2~" + str(B) + "x"
                 elif C > 0:
-                    tenksi = "x^2~" + str(B) + "x~+~" + str(C)
+                    tenkai = "x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "x^2~" + str(B) + "x~" + str(C)
+                    tenkai = "x^2~" + str(B) + "x~" + str(C)
         elif A == -1:
             if B == 0:
                 if C > 0:
-                    tenksi = "-x^2~+~" + str(C)
+                    tenkai = "-x^2~+~" + str(C)
                 elif C < 0:
-                    tenksi = "-x^2~" + str(C)
+                    tenkai = "-x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    tenksi = "-x^2~+~x"
+                    tenkai = "-x^2~+~x"
                 elif C > 0:
-                    tenksi = "-x^2~+~x~+~" + str(C)
+                    tenkai = "-x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "-x^2~+~x~" + str(C)
+                    tenkai = "-x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    tenksi = "-x^2~-x"
+                    tenkai = "-x^2~-x"
                 elif C > 0:
-                    tenksi = "-x^2~-x~+~" + str(C)
+                    tenkai = "-x^2~-x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "-x^2~-x~" + str(C)
+                    tenkai = "-x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    tenksi = "-x^2~+~" + str(B) + "x"
+                    tenkai = "-x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    tenksi = "-x^2~+~" + str(B) + "x~+~" + str(C)
+                    tenkai = "-x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "-x^2~+~" + str(B) + "x~" + str(C)
+                    tenkai = "-x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    tenksi = "-x^2~" + str(B) + "x"
+                    tenkai = "-x^2~" + str(B) + "x"
                 elif C > 0:
-                    tenksi = "-x^2~" + str(B) + "x~+~" + str(C)
+                    tenkai = "-x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = "-x^2~" + str(B) + "x~" + str(C)
+                    tenkai = "-x^2~" + str(B) + "x~" + str(C)
         else:
             if B == 0:
                 if C > 0:
-                    tenksi = str(A) + "x^2~+~" + str(C)
+                    tenkai = str(A) + "x^2~+~" + str(C)
                 elif C < 0:
-                    tenksi = str(A) + "x^2~" + str(C)
+                    tenkai = str(A) + "x^2~" + str(C)
             elif B == 1:
                 if C == 0:
-                    tenksi = str(A) + "x^2~+~x"
+                    tenkai = str(A) + "x^2~+~x"
                 elif C > 0:
-                    tenksi = str(A) + "x^2~+~x~+~" + str(C)
+                    tenkai = str(A) + "x^2~+~x~+~" + str(C)
                 elif C < 0:
-                    tenksi = str(A) + "x^2~+~x~" + str(C)
+                    tenkai = str(A) + "x^2~+~x~" + str(C)
             elif B == -1:
                 if C == 0:
-                    tenksi = str(A) + "x^2~-x"
+                    tenkai = str(A) + "x^2~-x"
                 elif C > 0:
-                    tenksi = str(A) + "x^2~-x~+~" + str(C)
+                    tenkai = str(A) + "x^2~-x~+~" + str(C)
                 elif C < 0:
-                    tenksi = str(A) + "x^2~-x~" + str(C)
+                    tenkai = str(A) + "x^2~-x~" + str(C)
             elif B > 0:
                 if C == 0:
-                    tenksi = str(A) + "x^2~+~" + str(B) + "x"
+                    tenkai = str(A) + "x^2~+~" + str(B) + "x"
                 elif C > 0:
-                    tenksi = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C)
+                    tenkai = str(A) + "x^2~+~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = str(A) + "x^2~+~" + str(B) + "x~" + str(C)
+                    tenkai = str(A) + "x^2~+~" + str(B) + "x~" + str(C)
             elif B < 0:
                 if C == 0:
-                    tenksi = str(A) + "x^2~" + str(B) + "x"
+                    tenkai = str(A) + "x^2~" + str(B) + "x"
                 elif C > 0:
-                    tenksi = str(A) + "x^2~" + str(B) + "x~+~" + str(C)
+                    tenkai = str(A) + "x^2~" + str(B) + "x~+~" + str(C)
                 elif C < 0:
-                    tenksi = str(A) + "x^2~" + str(B) + "x~" + str(C)
-#            print(a)
-#            print(b)
-#            print(c)
-#            print(d)
-        print("("+str(i)+")")
-        print("$"+insubunkai+"$\n")
-#            print(A)
-#            print(B)
-#            print(C)
-        print("$"+tenksi+"$\n\n")
-#
-        with open("ensyu.tex","a") as f:
-            print("("+str(i)+")~~$"+insubunkai+"$\n", file = f)
-        with open("ans.tex","a") as g:
-            print("("+str(i)+")~~$"+insubunkai+"$\n", file = g)
-            print("~~~~~~~~~$="+tenksi+"$\n", file = g) 
+                    tenkai = str(A) + "x^2~" + str(B) + "x~" + str(C)
+#        print(a)
+#        print(b)
+#        print(c)
+#        print(d)
+#        print("("+str(i)+")")
+#        print("$"+insubunkai+"$\n")
+#        print(A)
+#        print(B)
+#        print(C)
+#        print("$"+tenkai+"$\n\n")
+# 問題の出力
+        A = a*c
+        B = a*d + b*c
+        C = b*d
+# 途中式なし
+        if p == 1 or A == 0 or B == 0 or C == 0:
+            with open("ensyu.tex","a") as f:
+                print("("+str(i)+")~~$"+insubunkai+"$\n", file = f)
+            with open("ans.tex","a") as g:
+                print("("+str(i)+")~~$"+insubunkai+"$\n", file = g)
+                print("~~~~~~~~~$="+tenkai+"$\n", file = g) 
+# 途中式あり
+        else:        
+            if p == -1:
+                if A == 1:
+                    if B == 1:
+                        if C > 0:
+                            totyu = "-(x^2~+~x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(x^2~+~x~" + str(C) + ")"
+                    elif B == -1:
+                        if C > 0:
+                            totyu = "-(x^2~-x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(x^2~-x~" + str(C) + ")"
+                    elif B > 0:
+                        if C > 0:
+                            totyu = "-(x^2~+~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(x^2~+~" + str(B) + "x~" + str(C) + ")"
+                    elif B < 0:
+                        if C > 0:
+                            totyu = "-(x^2~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(x^2~" + str(B) + "x~" + str(C) + ")"
+                else:
+                    if B == 1:
+                        if C > 0:
+                            totyu = "-(" + str(A) + "x^2~+~x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(" + str(A) + "x^2~+~x~" + str(C) + ")"
+                    elif B == -1:
+                        if C > 0:
+                            totyu = "-(" + str(A) + "x^2~-x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(" + str(A) + "x^2~-x~" + str(C) + ")"
+                    elif B > 0:
+                        if C > 0:
+                            totyu = "-(" + str(A) + "x^2~+~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(" + str(A) + "x^2~+~" + str(B) + "x~" + str(C) + ")"
+                    elif B < 0:
+                        if C > 0:
+                            totyu = "-(" + str(A) + "x^2~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = "-(" + str(A) + "x^2~" + str(B) + "x~" + str(C) + ")"
+            else:
+                if A == 1:
+                    if B == 1:
+                        if C > 0:
+                            totyu = str(p) + "(x^2~+~x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(x^2~+~x~" + str(C) + ")"
+                    elif B == -1:
+                        if C > 0:
+                            totyu = str(p) + "(x^2~-x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(x^2~-x~" + str(C) + ")"
+                    elif B > 0:
+                        if C > 0:
+                            totyu = str(p) + "(x^2~+~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(x^2~+~" + str(B) + "x~" + str(C) + ")"
+                    elif B < 0:
+                        if C > 0:
+                            totyu = str(p) + "(x^2~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(x^2~" + str(B) + "x~" + str(C) + ")"
+                else:
+                    if B == 1:
+                        if C > 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~+~x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~+~x~" + str(C) + ")"
+                    elif B == -1:
+                        if C > 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~-x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~-x~" + str(C) + ")"
+                    elif B > 0:
+                        if C > 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~+~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~+~" + str(B) + "x~" + str(C) + ")"
+                    elif B < 0:
+                        if C > 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~" + str(B) + "x~+~" + str(C) + ")"
+                        elif C < 0:
+                            totyu = str(p) + "(" + str(A) + "x^2~" + str(B) + "x~" + str(C) + ")"
+            with open("ensyu.tex","a") as f:
+                print("("+str(i)+")~~$"+insubunkai+"$\n", file = f)
+            with open("ans.tex","a") as g:
+                print("("+str(i)+")~~$"+insubunkai+"$\n", file = g)
+                print("~~~~~~~~~$="+totyu+"$\n", file = g) 
+                print("~~~~~~~~~$="+tenkai+"$\n", file = g) 
     i = i + 1
 with open("ensyu.tex","a") as f:
     print(r"\end{document}", file = f)
