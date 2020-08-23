@@ -2,7 +2,7 @@
 #
 import random
 # 問題数
-n = 150
+n = 25
 # 乱数の範囲
 nal = 5
 nas = -5

@@ -1,9 +1,9 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.5.23)  16 AUG 2020 23:54
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.5.23)  23 AUG 2020 18:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ans
-(./ans.tex
+**ensyu
+(./ensyu.tex
 pLaTeX2e <2020-02-02>+3 (based on LaTeX2e <2020-02-02> patch level 5)
 L3 programming layer <2020-03-06>
 (/usr/local/texlive/2020/texmf-dist/tex/platex/base/jarticle.cls
@@ -459,7 +459,7 @@ Package: filehook 2020/02/03 v0.7 Hooks for input files
 \c@currfiledepth=\count290
 )
 \pytx@codefile=\write4
-\openout4 = `ans.pytxcode'.
+\openout4 = `ensyu.pytxcode'.
 
 \c@pytx@FancyVerbLineTemp=\count291
 \c@pytx@py@default@default=\count292
@@ -479,8 +479,8 @@ File: l3backend-dvips.def 2020-03-12 L3 backend support: dvips
 \g__pdf_backend_link_int=\count300
 \g__pdf_backend_link_sf_int=\count301
 )
-(./ans.aux)
-\openout1 = `ans.aux'.
+(./ensyu.aux)
+\openout1 = `ensyu.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 19.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
@@ -492,7 +492,6 @@ LaTeX Font Info:    ... okay on input line 19.
 LaTeX Font Info:    Checking defaults for OMS/txsy/m/n on input line 19.
 LaTeX Font Info:    Trying to load font information for OMS+txsy on input line 
 19.
-
 (/usr/local/texlive/2020/texmf-dist/tex/latex/txfonts/omstxsy.fd
 File: omstxsy.fd 2000/12/15 v3.1
 )
@@ -535,7 +534,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 Package newfloat Info: `float' package detected.
 
-No file pythontex-files-ans/ans.pytxmcr.
+No file pythontex-files-ensyu/ensyu.pytxmcr.
 Run PythonTeX to create it.
 Package newfloat Info: New float `listing' with options `fileext=lopytx' on inp
 ut line 19.
@@ -572,14 +571,15 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 20
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-] (./ans.aux) ) 
+]
+(./ensyu.aux) ) 
 Here is how much of TeX's memory you used:
  7974 strings out of 481140
- 133233 string characters out of 5917417
- 406237 words of memory out of 5000000
+ 133263 string characters out of 5917417
+ 403251 words of memory out of 5000000
  23854 multiletter control sequences out of 15000+600000
  549388 words of font info for 83 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 51i,5n,50p,423b,166s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 51i,5n,50p,425b,166s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ans.dvi (1 page, 4576 bytes).
+Output written on ensyu.dvi (1 page, 3844 bytes).
