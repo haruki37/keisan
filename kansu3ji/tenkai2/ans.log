@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.5.23)  24 AUG 2020 01:26
+This is e-pTeX, Version 3.14159265-p3.8.3-191112-2.6 (utf8.euc) (TeX Live 2020) (preloaded format=platex 2020.5.23)  25 AUG 2020 11:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -572,10 +572,10 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 20
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 ) [1
 
-] [2
+] [2]
+[3] [4] [5] [6
 
-]
-(./ans.aux) ) 
+] (./ans.aux) ) 
 Here is how much of TeX's memory you used:
  7974 strings out of 481140
  133233 string characters out of 5917417
@@ -585,4 +585,4 @@ Here is how much of TeX's memory you used:
  929 hyphenation exceptions out of 8191
  51i,6n,50p,423b,166s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on ans.dvi (2 pages, 8496 bytes).
+Output written on ans.dvi (6 pages, 30884 bytes).

@@ -3,7 +3,7 @@
 import sympy as sy
 import random
 # 問題数
-n = 150
+n = 20
 # 乱数の範囲
 nal = 5
 nas = -5
@@ -15,10 +15,8 @@ ndl = 10
 nds = -10
 #変数の定義
 (x, y) = sy.symbols("x y")
-(a, b) = sy.symbols("a b")
-#(pra, ans) = sy.symbols("pra, ans")
-#(ins, ten) = sy.symbols("ins ten")
-pra = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
+(a, b, c) = sy.symbols("a b c")
+pra = (a*x + b)**3
 ans = sy.expand(pra)
 # 問題のlatex
 with open("ensyu.tex","w") as f:
@@ -75,7 +73,7 @@ while i <= n:
     b = random.randrange(nbs,nbl)
     c = random.randrange(ncs,ncl)
 #    d = random.randrange(nds,ndl) 
-    if a == 0 or b == 0:
+    if a == 0 or b == 0 or c == 0:
         continue
     else:
         j = 2
@@ -91,7 +89,7 @@ while i <= n:
             a = -1 * a
             b = -1 * b
     if c == 1:
-        ins = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
+        ins = (a*x + b)**3
         ten = sy.expand(ins)
         with open("ensyu.tex","a") as f:
             print("("+str(i)+")~~$"+sy.latex(ins)+"$\n", file = f)
@@ -99,8 +97,8 @@ while i <= n:
             print("("+str(i)+")~~$"+sy.latex(ins)+"$\n", file = g)
             print("~~~~~~~~~$="+sy.latex(ten)+"$\n", file = g) 
     elif c == -1:
-        ins = -(a*x + b)*((a*x)**2 - (a*x)*b + b**2)
-        tty = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
+        ins = -(a*x + b)**3
+        tty = (a*x + b)**3
         ten = sy.expand(ins)
         ttt = sy.expand(tty)
         with open("ensyu.tex","a") as f:
@@ -110,8 +108,8 @@ while i <= n:
             print("~~~~~~~~~$=-("+sy.latex(ttt)+")$\n", file = g)
             print("~~~~~~~~~$="+sy.latex(ten)+"$\n", file = g) 
     else:
-        ins = c*(a*x + b)*((a*x)**2 - (a*x)*b + b**2)
-        tty = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
+        ins = c*(a*x + b)**3
+        tty = (a*x + b)**3
         ten = sy.expand(ins)
         ttt = sy.expand(tty)
         with open("ensyu.tex","a") as f:

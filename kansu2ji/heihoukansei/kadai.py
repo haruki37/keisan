@@ -2,7 +2,7 @@
 #
 import random
 # 問題数
-n = 50
+n = 25
 # 乱数の範囲
 nal = 5
 nas = -5
@@ -35,7 +35,7 @@ with open("ensyu.tex","w") as f:
     print(r"\begin{document}", file = f)
     print(r"tip: $ax^2 + bx + c$\\ ", file = f)
     print(r"~~~~~~~~~$= a(x^2 + \frac{b}{a}x) + c$\\ ", file = f)
-    print(r"~~~~~~~~~$= a(x + \frac{b}{2a})^2 - \left(\frac{b}{2a}\right)^2+ c$\\ ", file = f)
+    print(r"~~~~~~~~~$= a\left((x + \frac{b}{2a})^2 - \left(\frac{b}{2a}\right)^2 \right)+ c$\\ ", file = f)
     print(r"~~~~~~~~~$= a(x + p)^2 + q$"              , file = f)
     print("\n", file = f)
 # 解答のlatex
@@ -61,7 +61,7 @@ with open("ans.tex","w") as g:
     print(r"\begin{document}", file = g)
     print(r"tip: $ax^2 + bx + c$\\ ", file = g)
     print(r"~~~~~~~~~$= a(x^2 + \frac{b}{a}x) + c$\\ ", file = g)
-    print(r"~~~~~~~~~$= a(x + \frac{b}{2a})^2 - \left(\frac{b}{2a}\right)^2+ c$\\ ", file = g)
+    print(r"~~~~~~~~~$= a\left((x + \frac{b}{2a})^2 - \left(\frac{b}{2a}\right)^2 \right)+ c$\\ ", file = g)
     print(r"~~~~~~~~~$= a(x + p)^2 + q$"              , file = g)
     print("\n", file = g)
 # 問題の作成
