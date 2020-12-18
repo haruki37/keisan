@@ -3,7 +3,7 @@
 import sympy as sy
 import random
 # 問題数
-n = 150
+n = 20
 # 乱数の範囲
 nal = 5
 nas = -5
@@ -15,11 +15,13 @@ ndl = 10
 nds = -10
 #変数の定義
 (x, y) = sy.symbols("x y")
-(a, b) = sy.symbols("a b")
+(a, b, p) = sy.symbols("a b p")
 #(pra, ans) = sy.symbols("pra, ans")
 #(ins, ten) = sy.symbols("ins ten")
-pra = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
-ans = sy.expand(pra)
+pra1 = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
+ans1 = sy.expand(pra1)
+pra2 = (a*x - b)*((a*x)**2 + (a*x)*b + b**2)
+ans2 = sy.expand(pra2)
 # 問題のlatex
 with open("ensyu.tex","w") as f:
     print(r"\documentclass[a4j,twocolumn,10pt,fleqn]{jarticle}", file = f)
@@ -41,8 +43,11 @@ with open("ensyu.tex","w") as f:
     print(r"\usepackage{tabularx}", file = f)
     print(r"\usepackage{pythontex}", file = f)
     print(r"\begin{document}", file = f)
-    print(r"tip: $"+sy.latex(pra)+"$\n", file = f)
-    print(r"~~~~~~~~~$="+sy.latex(ans)+"$", file = f)
+    print(r"tip1: $"+sy.latex(pra1)+"$\n", file = f)
+    print(r"~~~~~~~~~$="+sy.latex(ans1)+"$", file = f)
+    print("\n", file = f)
+    print(r"tip2: $"+sy.latex(pra2)+"$\n", file = f)
+    print(r"~~~~~~~~~$="+sy.latex(ans2)+"$", file = f)
     print("\n", file = f)
 # 解答のlatex
 with open("ans.tex","w") as g:
@@ -65,20 +70,24 @@ with open("ans.tex","w") as g:
     print(r"\usepackage{tabularx}", file = g)
     print(r"\usepackage{pythontex}", file = g)
     print(r"\begin{document}", file = g)
-    print(r"tip: $"+sy.latex(pra)+"$\n", file = g)
-    print(r"~~~~~~~~~$="+sy.latex(ans)+"$", file = g)
+    print(r"tip1: $"+sy.latex(pra1)+"$\n", file = g)
+    print(r"~~~~~~~~~$="+sy.latex(ans1)+"$", file = g)
+    print("\n", file = g)
+    print(r"tip2: $"+sy.latex(pra2)+"$\n", file = g)
+    print(r"~~~~~~~~~$="+sy.latex(ans2)+"$", file = g)
     print("\n", file = g)
 # 問題の作成
 i = 1
 while i <= n:
     a = random.randrange(nas,nal)
     b = random.randrange(nbs,nbl)
-    c = random.randrange(ncs,ncl)
+#    c = random.randrange(ncs,ncl)
 #    d = random.randrange(nds,ndl) 
     if a == 0 or b == 0:
         continue
     else:
         j = 2
+        p = 1
         while j <= min(abs(a),abs(b)):
             moda = a % j  
             modb = b % j  
@@ -86,11 +95,13 @@ while i <= n:
                 a = a // j
                 b = b // j
                 j -= 1
+                p = p * j
             j += 1    
         if a < 0:
             a = -1 * a
             b = -1 * b
-    if c == 1:
+            p = -1 * p
+    if p == 1:
         ins = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
         ten = sy.expand(ins)
         with open("ensyu.tex","a") as f:
@@ -98,7 +109,7 @@ while i <= n:
         with open("ans.tex","a") as g:
             print("("+str(i)+")~~$"+sy.latex(ins)+"$\n", file = g)
             print("~~~~~~~~~$="+sy.latex(ten)+"$\n", file = g) 
-    elif c == -1:
+    elif p == -1:
         ins = -(a*x + b)*((a*x)**2 - (a*x)*b + b**2)
         tty = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
         ten = sy.expand(ins)
@@ -110,15 +121,15 @@ while i <= n:
             print("~~~~~~~~~$=-("+sy.latex(ttt)+")$\n", file = g)
             print("~~~~~~~~~$="+sy.latex(ten)+"$\n", file = g) 
     else:
-        ins = c*(a*x + b)*((a*x)**2 - (a*x)*b + b**2)
+        ins = p*(a*x + b)*((a*x)**2 - (a*x)*b + b**2)
         tty = (a*x + b)*((a*x)**2 - (a*x)*b + b**2)
         ten = sy.expand(ins)
         ttt = sy.expand(tty)
         with open("ensyu.tex","a") as f:
-            print("("+str(i)+")~~$"+sy.latex(c)+sy.latex(tty)+"$\n", file = f)
+            print("("+str(i)+")~~$"+sy.latex(p)+sy.latex(tty)+"$\n", file = f)
         with open("ans.tex","a") as g:
-            print("("+str(i)+")~~$"+sy.latex(c)+sy.latex(tty)+"$\n", file = g)
-            print("~~~~~~~~~$="+sy.latex(c)+"("+sy.latex(ttt)+")$\n", file = g)
+            print("("+str(i)+")~~$"+sy.latex(p)+sy.latex(tty)+"$\n", file = g)
+            print("~~~~~~~~~$="+sy.latex(p)+"("+sy.latex(ttt)+")$\n", file = g)
             print("~~~~~~~~~$="+sy.latex(ten)+"$\n", file = g) 
     i += 1
 with open("ensyu.tex","a") as f:
